@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ALL_PRODUCTS } from '../constants';
 import StarRating from '../components/StarRating';
@@ -9,6 +9,10 @@ import ProductReviewForm from '../components/ProductReviewForm';
 import { useWishlist } from '../context/WishlistContext';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ConfirmationModal from '../components/ConfirmationModal';
+import { ShareModal } from '../components/ShareModal';
+import { Product } from '../types';
+import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
+import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,11 +20,31 @@ const ProductDetailPage: React.FC = () => {
   const { addToCart } = useCart();
   const { getReviews, getReviewStats } = useReviews();
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { addProductToRecentlyViewed } = useRecentlyViewed();
+
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
+
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   
-  const product = ALL_PRODUCTS.find(p => p.id === id);
+  useEffect(() => {
+    setLoading(true);
+    // Simulate API call to fetch product details
+    const timer = setTimeout(() => {
+      const foundProduct = ALL_PRODUCTS.find(p => p.id === id);
+      setProduct(foundProduct);
+      if (foundProduct) {
+        addProductToRecentlyViewed(foundProduct.id);
+      }
+      setLoading(false);
+    }, 500); // 500ms delay to showcase skeleton loader
+
+    return () => clearTimeout(timer);
+  }, [id, addProductToRecentlyViewed]);
+
   const isWishlisted = product ? isInWishlist(product.id) : false;
 
   const handleWishlistToggle = () => {
@@ -38,6 +62,10 @@ const ProductDetailPage: React.FC = () => {
     }
   };
 
+  if (loading) {
+    return <ProductDetailSkeleton />;
+  }
+
   if (!product) {
     return (
       <div className="text-center py-20">
@@ -48,7 +76,7 @@ const ProductDetailPage: React.FC = () => {
       </div>
     );
   }
-
+  
   const { name, price, image, description } = product;
   
   const relatedProducts = ALL_PRODUCTS.filter(p => p.productType === product.productType && p.id !== product.id).slice(0, 4);
@@ -85,7 +113,7 @@ const ProductDetailPage: React.FC = () => {
   
   return (
     <>
-      <div className="animate-fadeIn">
+      <div className="animate-slideInRight">
         <Breadcrumbs items={breadcrumbItems} />
         <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8">
@@ -107,11 +135,6 @@ const ProductDetailPage: React.FC = () => {
                 </div>
                 <div className="flex-1 relative">
                   <img className="w-full h-auto object-cover rounded-lg shadow-md aspect-[1/1]" src={galleryImages[activeImage]} alt={name} />
-                  <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                    </svg>
-                  </button>
                 </div>
               </div>
             </div>
@@ -120,7 +143,18 @@ const ProductDetailPage: React.FC = () => {
             <div className="lg:col-span-4 mt-6 lg:mt-0">
               <h2 className="text-xl font-serif font-bold text-gray-800 mb-4">Product Details</h2>
               <a href="#" className="text-sm text-indigo-600 hover:underline">Visit the SGF11 Store</a>
-              <h1 className="text-2xl font-bold font-serif text-gray-800 mt-1 mb-2">{name}</h1>
+              <div className="flex justify-between items-start mt-1">
+                <h1 className="text-2xl font-bold font-serif text-gray-800 mb-2">{name}</h1>
+                <button 
+                  onClick={() => setIsShareModalOpen(true)}
+                  className="p-2 text-gray-500 hover:text-indigo-600 transition-colors"
+                  aria-label="Share this product"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6.001l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367 2.684z" />
+                  </svg>
+                </button>
+              </div>
               <div className="flex items-center gap-4 mb-3">
                 <div className="flex items-center gap-1">
                   <span className="text-gray-700 font-semibold">{averageRating.toFixed(1)}</span>
@@ -391,6 +425,13 @@ const ProductDetailPage: React.FC = () => {
         onConfirm={handleConfirmRemove}
         title="Remove from Wishlist"
         message="Are you sure you want to remove this item from your wishlist?"
+      />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        productName={product.name}
+        productImage={product.image}
+        pageUrl={window.location.href}
       />
     </>
   );

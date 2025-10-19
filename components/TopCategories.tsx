@@ -1,26 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const categories = [
+const collections = [
   {
-    name: 'SAREES',
-    image: 'https://images.pexels.com/photos/16655228/pexels-photo-16655228/free-photo-of-woman-in-a-sari-posing-by-a-wall.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    name: "Women's Collection",
+    description: 'Graceful sarees, elegant suits, and stunning lehengas.',
+    image: 'https://images.pexels.com/photos/3860203/pexels-photo-3860203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     link: '/category/women',
+    align: 'justify-end',
   },
   {
-    name: 'BLOUSES',
-    image: 'https://images.pexels.com/photos/10357606/pexels-photo-10357606.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    link: '/products',
-  },
-  {
-    name: 'SHAPEWEARS',
-    image: 'https://images.pexels.com/photos/7679883/pexels-photo-7679883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    link: '/products',
-  },
-  {
-    name: 'SAREE SATURDAY',
-    image: 'https://images.pexels.com/photos/10573082/pexels-photo-10573082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    link: '/products',
+    name: "Men's Collection",
+    description: 'Regal sherwanis and sophisticated kurtas for the modern man.',
+    image: 'https://images.pexels.com/photos/17058611/pexels-photo-17058611/free-photo-of-man-in-traditional-clothing-posing-outdoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    link: '/category/men',
+    align: 'justify-start',
   },
 ];
 
@@ -28,26 +22,21 @@ const TopCategories: React.FC = () => {
   return (
     <section>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-serif font-bold text-center mb-10 text-blue-900">
-          TOP CATEGORIES
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {categories.map((category, index) => (
-             <Link to={category.link} key={index} className="group block animate-slideInUp" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="bg-gradient-to-b from-[#f3eac8] to-[#d6b56e] rounded-2xl p-2 shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 h-full flex flex-col">
-                    <div className="flex-grow overflow-hidden rounded-xl h-96">
-                        <img
-                            src={category.image}
-                            alt={category.name}
-                            className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                        />
-                    </div>
-                    <div className="text-center py-4 flex-shrink-0">
-                        <p className="font-bold text-lg text-blue-900 tracking-wider">
-                            {category.name}
-                        </p>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {collections.map((collection, index) => (
+            <Link to={collection.link} key={index} className="group relative block h-96 rounded-lg overflow-hidden shadow-lg animate-slideInUp" style={{ animationDelay: `${index * 150}ms` }}>
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110"
+                style={{ backgroundImage: `url('${collection.image}')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className={`relative h-full flex flex-col p-8 text-white ${collection.align} text-left`}>
+                <h3 className="text-3xl font-serif font-bold">{collection.name}</h3>
+                <p className="mt-2 max-w-xs">{collection.description}</p>
+                <div className="mt-4 px-6 py-2 border border-white rounded-full self-start group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                  Shop Now
                 </div>
+              </div>
             </Link>
           ))}
         </div>

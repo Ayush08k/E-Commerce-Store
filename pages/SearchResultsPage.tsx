@@ -4,8 +4,8 @@ import { getPersonalizedSearchResults } from '../services/geminiService';
 import { Product } from '../types';
 import { ALL_PRODUCTS } from '../constants';
 import ProductGrid from '../components/ProductGrid';
-import Spinner from '../components/Spinner';
 import Breadcrumbs from '../components/Breadcrumbs';
+import ProductGridSkeleton from '../components/ProductGridSkeleton';
 
 const SearchResultsPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -51,7 +51,7 @@ const SearchResultsPage: React.FC = () => {
       <h1 className="text-4xl font-serif font-bold text-center mb-4">Search Results</h1>
       {query && <p className="text-center text-lg text-gray-600 mb-10">Showing personalized results for: <span className="font-semibold text-indigo-600">"{query}"</span></p>}
       
-      {loading && <Spinner />}
+      {loading && <ProductGridSkeleton count={8} />}
       
       {error && <p className="text-center text-red-500 text-lg">{error}</p>}
 
