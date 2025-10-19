@@ -26,6 +26,13 @@ The storefront is fully responsive, offering a seamless user experience across d
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+
+```dotenv
+GEMINI_API_KEY=your-google-gemini-key
+# Optional; defaults to http://localhost:4000/api
+VITE_API_BASE_URL=http://localhost:4000/api
+```
+   
 3. Run the app:
    `npm run dev`
 
