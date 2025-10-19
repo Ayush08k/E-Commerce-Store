@@ -1,0 +1,133 @@
+import { Product } from './types';
+
+export const ALL_PRODUCTS: Product[] = [
+  // Women
+  {
+    id: '1',
+    name: 'Royal Blue Banarasi Saree',
+    price: 250,
+    image: 'https://placehold.co/600x600/4267B2/FFFFFF?text=Saree',
+    description: 'A stunning royal blue Banarasi silk saree with intricate gold zari work, perfect for weddings and festive occasions.',
+    category: 'popular',
+    demographic: 'women',
+    productType: 'saree',
+  },
+  {
+    id: '2',
+    name: 'Elegant Red Anarkali Suit',
+    price: 180,
+    image: 'https://placehold.co/600x600/DC2626/FFFFFF?text=Suit',
+    description: 'A floor-length Anarkali suit in a rich red georgette fabric, adorned with delicate embroidery. Comes with a matching dupatta.',
+    category: 'new',
+    demographic: 'women',
+    productType: 'suit',
+  },
+  {
+    id: '3',
+    name: 'Pastel Green Lehenga Choli',
+    price: 320,
+    image: 'https://placehold.co/600x600/86EFAC/333333?text=Lehenga',
+    description: 'A beautiful pastel green lehenga with mirror work and a contrasting pink choli. Ideal for a modern yet traditional look.',
+    category: 'best',
+    demographic: 'women',
+    productType: 'lehenga',
+  },
+  {
+    id: '4',
+    name: 'Simple Cotton Kurta',
+    price: 60,
+    image: 'https://placehold.co/600x600/F472B6/FFFFFF?text=Kurta',
+    description: 'A comfortable and stylish pink cotton kurta for daily wear, featuring block print patterns.',
+    category: 'none',
+    demographic: 'women',
+    productType: 'kurta',
+  },
+
+  // Men
+  {
+    id: '5',
+    name: 'Classic Cream Sherwani',
+    price: 350,
+    image: 'https://placehold.co/600x600/F5F5DC/333333?text=Sherwani',
+    description: 'An exquisite cream-colored sherwani in raw silk, embellished with subtle gold embroidery. Perfect for the groom.',
+    category: 'best',
+    demographic: 'men',
+    productType: 'sherwani',
+  },
+  {
+    id: '6',
+    name: 'Navy Blue Silk Kurta Set',
+    price: 120,
+    image: 'https://placehold.co/600x600/1E3A8A/FFFFFF?text=Kurta',
+    description: 'A smart navy blue silk kurta with a churidar pajama. A versatile outfit for any festive occasion.',
+    category: 'popular',
+    demographic: 'men',
+    productType: 'kurta',
+  },
+
+  // Girls
+  {
+    id: '7',
+    name: 'Bright Yellow Girls Lehenga',
+    price: 90,
+    image: 'https://placehold.co/600x600/FBBF24/333333?text=Lehenga',
+    description: 'A cheerful yellow and pink lehenga choli for girls, made with soft net fabric. Light and comfortable for kids.',
+    category: 'new',
+    demographic: 'girl',
+    productType: 'lehenga',
+  },
+  {
+    id: '8',
+    name: 'Girls Floral Print Kurta Set',
+    price: 55,
+    image: 'https://placehold.co/600x600/EC4899/FFFFFF?text=Kurta',
+    description: 'A cute floral print kurta and palazzo set for girls. Made from breathable cotton fabric.',
+    category: 'none',
+    demographic: 'girl',
+    productType: 'kurta',
+  },
+
+  // Boys
+  {
+    id: '9',
+    name: 'Maroon Kurta Pajama for Boys',
+    price: 65,
+    image: 'https://placehold.co/600x600/800000/FFFFFF?text=Kurta',
+    description: 'A traditional maroon kurta pajama set for boys in a comfortable cotton silk blend.',
+    category: 'popular',
+    demographic: 'boy',
+    productType: 'kurta',
+  },
+  
+  // More products
+  {
+    id: '10',
+    name: 'Emerald Green Silk Saree',
+    price: 280,
+    image: 'https://placehold.co/600x600/059669/FFFFFF?text=Saree',
+    description: 'A luxurious emerald green Kanjeevaram silk saree with a contrasting border. A timeless classic.',
+    category: 'best',
+    demographic: 'women',
+    productType: 'saree',
+  },
+  {
+    id: '11',
+    name: 'Black Velvet Sherwani',
+    price: 400,
+    image: 'https://placehold.co/600x600/111827/FFFFFF?text=Sherwani',
+    description: 'A regal black velvet sherwani with intricate hand embroidery. Perfect for a winter wedding reception.',
+    category: 'new',
+    demographic: 'men',
+    productType: 'sherwani',
+  },
+  {
+    id: '12',
+    name: 'Embroidered Blue Kurta',
+    price: 95,
+    image: 'https://placehold.co/600x600/3B82F6/FFFFFF?text=Kurta',
+    description: 'A stylish blue linen kurta for men with chikankari embroidery. Perfect for a semi-formal look.',
+    category: 'none',
+    demographic: 'men',
+    productType: 'kurta',
+  },
+];
