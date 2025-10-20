@@ -6,6 +6,7 @@ import TopCategories from '../components/TopCategories';
 import RecentlyViewed from '../components/RecentlyViewed';
 import Testimonials from '../components/Testimonials';
 import InstagramFeed from '../components/InstagramFeed';
+import ShopByOccasion from '../components/ShopByOccasion';
 
 // New section data
 const shopTheLookImages = [
@@ -72,6 +73,9 @@ const HomePage: React.FC = () => {
 
       {/* Top Categories */}
       <TopCategories />
+      
+      {/* Shop by Occasion */}
+      <ShopByOccasion />
 
       {/* Featured Products Section */}
       <section>
