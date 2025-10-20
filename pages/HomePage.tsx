@@ -4,6 +4,8 @@ import ProductCard from '../components/ProductCard';
 import { Link } from 'react-router-dom';
 import TopCategories from '../components/TopCategories';
 import RecentlyViewed from '../components/RecentlyViewed';
+import Testimonials from '../components/Testimonials';
+import InstagramFeed from '../components/InstagramFeed';
 
 // New section data
 const shopTheLookImages = [
@@ -111,6 +113,12 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Customer Testimonials Section */}
+      <Testimonials />
+
+      {/* Instagram Feed Section */}
+      <InstagramFeed />
 
       {/* Recently Viewed Section */}
       <RecentlyViewed />

@@ -13,6 +13,7 @@ import { ShareModal } from '../components/ShareModal';
 import { Product } from '../types';
 import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
+import ImageZoom from '../components/ImageZoom';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -134,7 +135,7 @@ const ProductDetailPage: React.FC = () => {
                   ))}
                 </div>
                 <div className="flex-1 relative">
-                  <img className="w-full h-auto object-cover rounded-lg shadow-md aspect-[1/1]" src={galleryImages[activeImage]} alt={name} />
+                  <ImageZoom src={galleryImages[activeImage]} alt={name} />
                 </div>
               </div>
             </div>
@@ -283,7 +284,7 @@ const ProductDetailPage: React.FC = () => {
                         </div>
                         <div>
                             <h3 className="text-xl font-serif font-bold mb-4">About this item</h3>
-                            <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                            <ul className="list-disc list-inside space-y-2 text-gray-700 text-base">
                                 <li>Fabric: Kanchipuram Silk, Blouse Fabric Kanchipuram Silk. Work: Jacquard Woven Stylish Sari, Zari Woven.</li>
                                 <li>Saree Length: 5.50 Meter, Blouse Piece Length: 0.80 Meter (Unstitched, attached with saree)</li>
                             </ul>
@@ -342,9 +343,9 @@ const ProductDetailPage: React.FC = () => {
                 <div className="flex flex-col gap-6">
                     <div>
                         <h3 className="font-bold text-lg text-gray-800 mb-2">Premium Superb Quality Saree For Indian Occasions</h3>
-                        <p className="text-sm leading-relaxed">Kanjivaram silk saree is a magnificent creation of the craftsmen living in a small town. The silk used in the creation of Kanjivaram saree is extremely fine as well as durable and is one of the most popular forms of silk.</p>
-                        <p className="text-sm leading-relaxed mt-2">A beautiful Pink color saree is well crafted with premium quality Kanjivaram silk fabric with Rani Golden color Zari border.</p>
-                        <div className="mt-4 p-3 border rounded-md bg-gray-50 text-sm">
+                        <p className="text-base leading-relaxed">Kanjivaram silk saree is a magnificent creation of the craftsmen living in a small town. The silk used in the creation of Kanjivaram saree is extremely fine as well as durable and is one of the most popular forms of silk.</p>
+                        <p className="text-base leading-relaxed mt-2">A beautiful Pink color saree is well crafted with premium quality Kanjivaram silk fabric with Rani Golden color Zari border.</p>
+                        <div className="mt-4 p-3 border rounded-md bg-gray-50 text-base">
                             Saree Color - Pink With Golden color wide Border
                         </div>
                     </div>
@@ -352,8 +353,8 @@ const ProductDetailPage: React.FC = () => {
                         <img src={galleryImages[1]} alt="Fabric detail" className="rounded-lg w-full" />
                         <div>
                             <h4 className="font-semibold text-gray-800">About Saree</h4>
-                            <p className="text-xs leading-relaxed mt-1">When a woman is dressed in saree, it redefines her elegance and accentuates her grace. With the right material and drape, it can accentuate the beauty of women of all ages and forms.</p>
-                            <ul className="list-disc list-inside text-xs mt-2 space-y-1 font-semibold">
+                            <p className="text-sm leading-relaxed mt-1">When a woman is dressed in saree, it redefines her elegance and accentuates her grace. With the right material and drape, it can accentuate the beauty of women of all ages and forms.</p>
+                            <ul className="list-disc list-inside text-sm mt-2 space-y-1 font-semibold">
                                 <li>Traditional Wear</li>
                                 <li>Wedding Wear</li>
                                 <li>Party Wear</li>
@@ -369,7 +370,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
                 <div>
                     <h3 className="font-bold text-lg text-gray-800 mb-2">Kanjivaram Soft Silk Saree with Rich Pallu And Border</h3>
-                    <p className="text-sm leading-relaxed">One of the most graceful costumes made from unstitched fabric-the saree-the much-loved choice for most Indian women can be worn in so many different ways. The saree and all its parts, the body, the pallu and the border, all of them play a significant role in the entire look.</p>
+                    <p className="text-base leading-relaxed">One of the most graceful costumes made from unstitched fabric-the saree-the much-loved choice for most Indian women can be worn in so many different ways. The saree and all its parts, the body, the pallu and the border, all of them play a significant role in the entire look.</p>
                 </div>
             </div>
             
@@ -377,8 +378,8 @@ const ProductDetailPage: React.FC = () => {
                 <img src={galleryImages[3]} alt="Saree close-up" className="rounded-lg w-full" />
                 <div>
                     <h3 className="font-bold text-lg text-gray-800 mb-2">Kanjivaram Soft Silk Saree with Easy Care</h3>
-                    <p className="text-sm leading-relaxed">Gorgeous beautiful color saree is well crafted with high quality Kanjivaram Silk fabric soft finished, heavy Zari border with Rich pallu, comfortable to wear, artistically woven by our skilled artisans; now flaunt your sophisticated appearance on any special function!</p>
-                    <p className="text-sm leading-relaxed mt-2">Festivals are not far away, the best way to celebrate this time with dressing up your traditional attire. Saree is one such attire that would never go out of fashion.</p>
+                    <p className="text-base leading-relaxed">Gorgeous beautiful color saree is well crafted with high quality Kanjivaram Silk fabric soft finished, heavy Zari border with Rich pallu, comfortable to wear, artistically woven by our skilled artisans; now flaunt your sophisticated appearance on any special function!</p>
+                    <p className="text-base leading-relaxed mt-2">Festivals are not far away, the best way to celebrate this time with dressing up your traditional attire. Saree is one such attire that would never go out of fashion.</p>
                 </div>
             </div>
 
@@ -388,17 +389,17 @@ const ProductDetailPage: React.FC = () => {
                     <div>
                         <img src={galleryImages[4]} alt="Saree Border" className="rounded-lg mb-3 shadow-sm" />
                         <h4 className="font-semibold text-gray-800">Saree Border</h4>
-                        <p className="text-sm mt-1">Our saree and beautiful Kanjivaram Silk Saree comes with an elegant border that highlights the saree well. With easy draping and a beautiful fall, these sarees can be worn for any festive occasion.</p>
+                        <p className="text-base mt-1">Our saree and beautiful Kanjivaram Silk Saree comes with an elegant border that highlights the saree well. With easy draping and a beautiful fall, these sarees can be worn for any festive occasion.</p>
                     </div>
                     <div>
                         <img src={galleryImages[0]} alt="Saree Body part" className="rounded-lg mb-3 shadow-sm" />
                         <h4 className="font-semibold text-gray-800">Saree Body part</h4>
-                        <p className="text-sm mt-1">saree is traditionally created by weavers. Considered to be made from the highest quality silks, though intricate and very beautiful. Featuring an unending variety in color, shades, contrasts and patterns.</p>
+                        <p className="text-base mt-1">saree is traditionally created by weavers. Considered to be made from the highest quality silks, though intricate and very beautiful. Featuring an unending variety in color, shades, contrasts and patterns.</p>
                     </div>
                     <div>
                         <img src={galleryImages[5]} alt="Latest Design Collection" className="rounded-lg mb-3 shadow-sm" />
                         <h4 className="font-semibold text-gray-800">Latest Design Collection</h4>
-                        <p className="text-sm mt-1">The beauty of Kanjivaram Silk Saree is that it emanates a rich grace. With its rich looks, and eye-catching colors, you can choose from a wide range of our Kanjivaram Sarees.</p>
+                        <p className="text-base mt-1">The beauty of Kanjivaram Silk Saree is that it emanates a rich grace. With its rich looks, and eye-catching colors, you can choose from a wide range of our Kanjivaram Sarees.</p>
                     </div>
                 </div>
             </div>
